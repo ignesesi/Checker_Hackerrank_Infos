@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ime=$1
+broi=$2
+
+for i in $(seq -w 01 $broi)
+do
+	mv ./$ime/tests/input/input$i.txt ./$ime/tests/$ime.$i.in
+	mv ./$ime/tests/output/output$i.txt ./$ime/tests/$ime.$i.sol
+done
+
+rm -rf ./$ime/tests/input
+rm -rf ./$ime/tests/output

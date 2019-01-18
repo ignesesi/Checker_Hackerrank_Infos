@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ime=$1
+broi=$2
+
+g++ ./$ime/$ime.cpp -o ./$ime/$ime
+
+mkdir ./$ime/tests
+
+for i in $(seq -w 01 $broi)
+do
+	echo $RANDOM > ./$ime/tests/$ime.$i.in
+	./$ime/$ime < ./$ime/tests/$ime.$i.in > ./$ime/tests/$ime.$i.sol
+done
+

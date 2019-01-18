@@ -1,0 +1,33 @@
+#!/bin/bash
+
+dete=$1
+zad=$2
+tests=$3
+
+g++ ./solutions/$dete/$zad.cpp -o ./solutions/$dete/$zad
+
+res=0
+
+echo $zad
+
+for i in $(seq -w 01 $tests)
+do
+	./solutions/$dete/$zad < ./$zad/tests/$zad.$i.in > ./solutions/$dete/$zad.$i.out
+	diff -q -Z ./solutions/$dete/$zad.$i.out ./$zad/tests/$zad.$i.sol > /dev/null
+	#echo $?
+	#cat ./solutions/$dete/$zad.$i.out
+	#echo
+	#cat ./$zad/tests/$zad.$i.sol	
+	if (( $? == 0 ))
+	then
+		res=$((res+1))
+		echo Test $i: OK
+	else
+		echo Test $i: WA
+	fi
+done
+
+echo RESULT: $res/$tests
+
+echo
+

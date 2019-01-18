@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ime=$1
+broi=$2
+
+for i in $(seq -w 01 $broi)
+do
+	echo Input$i:
+	cat ./$ime/$ime.$i.in 
+	echo Output$i:
+	cat ./$ime/$ime.$i.sol 
+done
+

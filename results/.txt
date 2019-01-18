@@ -1,0 +1,5 @@
+Fri Jan 18 23:13:04 EET 2019
+
+Test 01: WA
+RESULT: 0/
+

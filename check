@@ -1,0 +1,9 @@
+#!/bin/bash
+
+dete=$1
+zad=$2
+tests=$3
+
+mkdir ./results
+mkdir ./results/$dete
+(date; ./checker $dete $zad $tests) > results/$dete/$zad.txt 

@@ -1,0 +1,24 @@
+Fri Jan 18 23:13:13 EET 2019
+catalan
+Test 01: OK
+Test 02: OK
+Test 03: OK
+Test 04: OK
+Test 05: OK
+Test 06: OK
+Test 07: OK
+Test 08: OK
+Test 09: OK
+Test 10: OK
+Test 11: OK
+Test 12: OK
+Test 13: OK
+Test 14: OK
+Test 15: OK
+Test 16: OK
+Test 17: OK
+Test 18: OK
+Test 19: OK
+Test 20: OK
+RESULT: 20/20
+
