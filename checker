@@ -2,9 +2,10 @@
 
 dete=$1
 zad=$2
+path=$3
 #tests=$3
 
-g++ -std=c++11 -O2 ./solutions/$dete/$zad.cpp -o ./solutions/$dete/$zad
+g++ -std=c++11 -O2 $path/solutions/$dete/$zad.cpp -o $path/solutions/$dete/$zad
 
 res=0
 cntTests=0
@@ -14,14 +15,14 @@ echo $zad
 tempfile=$(mktemp)
 
 #for i in $(seq -w 01 $tests)
-for i in $zad/tests/*.in
+for i in $path/problems/$zad/tests/*.in
 do
 	fname=$(basename $i .in)
 	inf=$fname.in
 	outf=$fname.sol
 
-	./solutions/$dete/$zad < ./$zad/tests/$inf > $tempfile
-        diff -q -Z $tempfile ./$zad/tests/$outf > /dev/null
+        timeout 1 $path/solutions/$dete/$zad < $path/problems/$zad/tests/$inf > $tempfile
+        diff -q -Z $tempfile $path/problems/$zad/tests/$outf > /dev/null
 	#echo $?
 	#cat ./solutions/$dete/$zad.$i.out
 	#echo

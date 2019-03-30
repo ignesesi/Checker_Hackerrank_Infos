@@ -3,6 +3,13 @@
 dete=$1
 zad=$2
 
-mkdir -p ./results/$dete
-(date; ./checker $dete $zad; echo =====================) >> results/$dete/$zad.txt 
+echo $dete
+echo $zad
+
+path="/home/esi/Checker_Hackerrank_Infos"
+#path="."
+echo $path
+
+mkdir -p $path/results/$dete
+(date; $path/checker $dete $zad $path; echo =====================) >> $path/results/$dete/$zad.txt 
 
