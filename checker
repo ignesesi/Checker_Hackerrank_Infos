@@ -2,18 +2,26 @@
 
 dete=$1
 zad=$2
-tests=$3
+#tests=$3
 
-g++ ./solutions/$dete/$zad.cpp -o ./solutions/$dete/$zad
+g++ -std=c++11 -O2 ./solutions/$dete/$zad.cpp -o ./solutions/$dete/$zad
 
 res=0
+cntTests=0
 
 echo $zad
 
-for i in $(seq -w 01 $tests)
+tempfile=$(mktemp)
+
+#for i in $(seq -w 01 $tests)
+for i in $zad/tests/*.in
 do
-	./solutions/$dete/$zad < ./$zad/tests/$zad.$i.in > ./solutions/$dete/$zad.$i.out
-	diff -q -Z ./solutions/$dete/$zad.$i.out ./$zad/tests/$zad.$i.sol > /dev/null
+	fname=$(basename $i .in)
+	inf=$fname.in
+	outf=$fname.sol
+
+	./solutions/$dete/$zad < ./$zad/tests/$inf > tempfile
+        diff -q -Z tempfile ./$zad/tests/$outf > /dev/null
 	#echo $?
 	#cat ./solutions/$dete/$zad.$i.out
 	#echo
@@ -21,13 +29,16 @@ do
 	if (( $? == 0 ))
 	then
 		res=$((res+1))
-		echo Test $i: OK
+		echo Test $fname: OK
 	else
-		echo Test $i: WA
+		echo Test $fname: WA
 	fi
+	cntTests=$((cntTests+1))
 done
 
-echo RESULT: $res/$tests
+rm $tempfile
+
+echo RESULT: $res/$cntTests
 
 echo
 

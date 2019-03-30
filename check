@@ -2,8 +2,7 @@
 
 dete=$1
 zad=$2
-tests=$3
 
-mkdir ./results
-mkdir ./results/$dete
-(date; ./checker $dete $zad $tests) > results/$dete/$zad.txt 
+mkdir -p ./results/$dete
+(date; ./checker $dete $zad; echo =====================) >> results/$dete/$zad.txt 
+
