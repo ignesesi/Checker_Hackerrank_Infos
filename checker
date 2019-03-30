@@ -20,8 +20,8 @@ do
 	inf=$fname.in
 	outf=$fname.sol
 
-	./solutions/$dete/$zad < ./$zad/tests/$inf > tempfile
-        diff -q -Z tempfile ./$zad/tests/$outf > /dev/null
+	./solutions/$dete/$zad < ./$zad/tests/$inf > $tempfile
+        diff -q -Z $tempfile ./$zad/tests/$outf > /dev/null
 	#echo $?
 	#cat ./solutions/$dete/$zad.$i.out
 	#echo
